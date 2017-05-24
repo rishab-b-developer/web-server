@@ -31,9 +31,11 @@ app.use((request, response, next) => {
     console.log(logText);
     next();
 });
+
 /*app.use((request, response, next) => {
     response.render('maintainence.hbs');
 });*/
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (request, response) => {
@@ -48,8 +50,9 @@ app.get('/about', (request, response) => {
         pMessage: 'Happy to tell you about us.'
     });
 });
-app.get('/bad', (request, response) => {
-    response.send({
-        error: 'unable to serve request'
+app.get('/contact', (request, response) => {
+    response.render('contact.hbs', {
+        pTitle: 'Contact',
+        pMessage: 'You can reach us web@web.com.'
     });
 });
